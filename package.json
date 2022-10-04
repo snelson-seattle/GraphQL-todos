@@ -1,0 +1,23 @@
+{
+  "name": "graphql-todos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snelson-seattle/GraphQL-todos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snelson-seattle/GraphQL-todos/issues"
+  },
+  "homepage": "https://github.com/snelson-seattle/GraphQL-todos#readme",
+  "devDependencies": {
+    "concurrently": "^7.4.0"
+  }
+}
