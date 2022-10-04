@@ -28,13 +28,13 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const existingUser = await User.findOne({ email });
+      const existingUser = await User.findOne({ email }).exec();
 
       if (!existingUser) {
         throw new AuthenticationError("No user with this email was found!");
       }
 
-      const matchingPassword = await User.isCorrectPassword(password);
+      const matchingPassword = await existingUser.isCorrectPassword(password);
 
       if (!matchingPassword) {
         throw new AuthenticationError("Incorrect Password!");
