@@ -5,6 +5,7 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
+      required: true,
       unique: true,
       trim: true,
     },
@@ -19,6 +20,9 @@ const userSchema = new Schema(
       required: true,
       minlength: 8,
     },
+    token: {
+      type: String,
+    },
   },
   {
     timestamps: true,
@@ -29,6 +33,10 @@ userSchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  if (this.isNew) {
+    this.email = this.email.toLowerCase();
   }
   next();
 });
